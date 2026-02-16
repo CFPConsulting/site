@@ -1,79 +1,317 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>CFP Consulting – Friendly IT Support</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body { font-family: Arial; margin:0; background:#f5f5f5; }
-        header { background:#1f3a5f; color:white; padding:30px; text-align:center; }
-        section { padding:30px; max-width:900px; margin:auto; }
-        .card { background:white; padding:20px; margin:20px 0; border-radius:8px; }
-        .button {
-            display:inline-block;
-            padding:12px 20px;
-            background:#2c7be5;
-            color:white;
-            text-decoration:none;
-            border-radius:5px;
-            margin-top:10px;
-        }
-        footer { text-align:center; padding:20px; font-size:14px; color:#777; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CFP Consulting — Friendly IT Support</title>
+  <meta name="description" content="CFP Consulting provides friendly IT support for small businesses and seniors in Toronto. Microsoft 365 help, backups, security, and scam protection." />
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1b33;
+      --muted:#9fb3c8;
+      --text:#eaf2ff;
+      --accent:#4ea1ff;
+      --accent2:#46e0b6;
+      --border: rgba(255,255,255,.12);
+      --shadow: 0 12px 40px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 700px at 20% -10%, rgba(78,161,255,.35), transparent 60%),
+                  radial-gradient(900px 600px at 95% 0%, rgba(70,224,182,.22), transparent 55%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a{ color: inherit; }
+    .wrap{
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 26px 18px 60px;
+    }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      font-weight: 750;
+      letter-spacing: .2px;
+    }
+    .logo{
+      width: 38px; height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: var(--shadow);
+    }
+    .nav{
+      display:flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .nav a{ text-decoration:none; opacity:.95; }
+    .nav a:hover{ color: var(--text); }
+
+    .hero{
+      margin-top: 10px;
+      padding: 30px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .hero h1{
+      margin: 0 0 10px;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.1;
+    }
+    .hero p{
+      margin: 0 0 18px;
+      color: var(--muted);
+      max-width: 70ch;
+      font-size: 16px;
+    }
+    .pillrow{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 14px 0 22px;
+    }
+    .pill{
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .ctaRow{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-weight: 750;
+      text-decoration:none;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.06);
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, var(--accent), #2f7cff);
+      border: none;
+      color: #061121;
+    }
+    .btn:hover{ transform: translateY(-1px); }
+    .btn small{ opacity:.85; font-weight:700; }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .card{
+      grid-column: span 6;
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+    }
+    .card h2{
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+    .price{
+      display:inline-flex;
+      align-items:baseline;
+      gap: 8px;
+      margin: 6px 0 12px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(78,161,255,.14);
+      border: 1px solid rgba(78,161,255,.25);
+      font-weight: 850;
+    }
+    .price span{
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 13px;
+    }
+    ul{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    li{ margin: 7px 0; }
+
+    .split{
+      grid-column: span 12;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .panel{
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+    }
+    .muted{ color: var(--muted); }
+
+    .contactBox{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+    .contactLine{
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-weight: 650;
+      word-break: break-word;
+    }
+    .contactLine b{ color: var(--text); }
+
+    footer{
+      margin-top: 22px;
+      text-align:center;
+      color: rgba(255,255,255,.55);
+      font-size: 13px;
+    }
+
+    @media (max-width: 860px){
+      .card{ grid-column: span 12; }
+      .split{ grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 
 <body>
+  <div class="wrap">
 
-<header>
-    <h1>CFP Consulting</h1>
-    <p>Friendly IT Support for Small Businesses & Seniors</p>
-</header>
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>CFP Consulting</div>
+      </div>
 
-<section>
+      <div class="nav">
+        <a href="#smallbiz">Small Business</a>
+        <a href="#seniors">Seniors</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
 
-<div class="card">
-<h2>Small Business IT – $149/month</h2>
-<p>Peace-of-mind Microsoft 365 and backup support.</p>
-<ul>
-<li>M365 health checks</li>
-<li>Backup monitoring</li>
-<li>Azure RDP troubleshooting</li>
-<li>Email/DNS/SPF fixes</li>
-<li>1 support hour per month</li>
-</ul>
-<a class="button" href="YOUR_BOOKING_LINK">Book Free Checkup</a>
-</div>
+    <section class="hero">
+      <h1>Friendly IT support that keeps life simple.</h1>
+      <p>
+        CFP Consulting provides practical, patient tech support for Toronto-area small businesses and seniors.
+        Microsoft 365 help, backups, security tune-ups, and scam protection — without the jargon.
+      </p>
 
-<div class="card">
-<h2>Senior Tech Help – $49/month</h2>
-<p>Friendly, patient help with computers and phones.</p>
-<ul>
-<li>Scam protection</li>
-<li>Photo backup</li>
-<li>Printer & Wi-Fi help</li>
-<li>Password setup</li>
-<li>Monthly remote checkup</li>
-</ul>
-<a class="button" href="YOUR_BOOKING_LINK">Call Cathal</a>
-</div>
+      <div class="pillrow">
+        <div class="pill">Microsoft 365</div>
+        <div class="pill">Backups & Recovery</div>
+        <div class="pill">Email / DNS / SPF</div>
+        <div class="pill">Remote Support</div>
+      </div>
 
-<div class="card">
-<h2>About Cathal Flynn-Post</h2>
-<p>20+ years supporting small businesses in Microsoft 365, Azure, and POS systems.
-Local Toronto consultant. Author of the George Ryan Archaeological Thriller series.</p>
-</div>
+      <div class="ctaRow">
+        <!-- Replace with your Bookings link -->
+        <a class="btn primary" href="YOUR_BOOKING_LINK">Book a free 15-minute checkup</a>
+        <a class="btn" href="#contact">Contact details</a>
+      </div>
+    </section>
 
-<div class="card">
-<h2>Contact</h2>
-<p>Email: you@cfpconsulting.ca</p>
-<p>Phone: xxx-xxx-xxxx</p>
-</div>
+    <div class="grid">
+      <section id="smallbiz" class="card">
+        <h2>Small Business IT Plan</h2>
+        <div class="price">$149 <span>per month</span></div>
+        <div class="muted">Peace-of-mind support for Microsoft 365 and core business systems.</div>
+        <ul>
+          <li>M365 tenant health checks & cleanup</li>
+          <li>Email deliverability fixes (DNS/SPF)</li>
+          <li>Backup monitoring & restore readiness</li>
+          <li>Azure RDP troubleshooting (as needed)</li>
+          <li>1 support hour/month + priority response</li>
+        </ul>
+        <div class="ctaRow" style="margin-top:14px;">
+          <a class="btn primary" href="YOUR_BOOKING_LINK"><small>Start here:</small>&nbsp;Free checkup</a>
+          <!-- Optional link to your SharePoint client portal -->
+          <a class="btn" href="YOUR_SMALLBIZ_PORTAL_LINK">Client portal login</a>
+        </div>
+      </section>
 
-</section>
+      <section id="seniors" class="card">
+        <h2>Senior Tech Help Plan</h2>
+        <div class="price">$49 <span>per month</span></div>
+        <div class="muted">Friendly, patient help — scams, passwords, photos, printers, Wi-Fi.</div>
+        <ul>
+          <li>Monthly remote checkup (up to 45 minutes)</li>
+          <li>Scam protection & “is this real?” review</li>
+          <li>Photo backup setup & verification</li>
+          <li>Printer + Wi-Fi troubleshooting</li>
+          <li>Password help and device setup</li>
+        </ul>
+        <div class="ctaRow" style="margin-top:14px;">
+          <a class="btn primary" href="YOUR_BOOKING_LINK"><small>Quick help:</small>&nbsp;Book a call</a>
+          <!-- Optional link to your SharePoint seniors portal -->
+          <a class="btn" href="YOUR_SENIORS_PORTAL_LINK">Member resources</a>
+        </div>
+      </section>
+    </div>
 
-<footer>
-© 2026 CFP Consulting – cfpconsulting.ca
-</footer>
+    <section class="split">
+      <div class="panel">
+        <h2 style="margin:0 0 8px;">About</h2>
+        <p class="muted" style="margin:0;">
+          I’m Cathal Flynn-Post — a long-time IT consultant focused on Microsoft 365, Azure, backups, and practical fixes.
+          Calm support, clear steps, and no tech intimidation.
+        </p>
+      </div>
 
+      <section id="contact" class="panel contactBox">
+        <h2 style="margin:0 0 6px;">Contact</h2>
+        <div class="contactLine"><b>Email:</b> yourname@cfpconsulting.ca</div>
+        <div class="contactLine"><b>Phone:</b> 416-xxx-xxxx</div>
+        <div class="contactLine"><b>Service area:</b> Toronto & remote across Canada</div>
+      </section>
+    </section>
+
+    <footer>
+      © 2026 CFP Consulting • cfpconsulting.ca
+    </footer>
+
+  </div>
 </body>
 </html>
-
